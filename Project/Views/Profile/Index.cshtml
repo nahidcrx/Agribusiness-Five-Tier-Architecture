@@ -1,0 +1,96 @@
+﻿@model List<ProjectEntity.Product>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/../../Home/Index">Home </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/../../Profile/Index/@Session["regid"]">Profile <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Login/Logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+
+
+
+
+        <h1 align="center">@ViewData["first_name"] @ViewData["last_name"]</h1> <br>
+        <div align="center"><a href="/Profile/AdPost" class="btn btn-primary" style="font-size:30px;background:Tomato; ">Add Post</a><span style="font-size:30px"> </span><a href="/../../Profile/Myinfo/@Session["regid"]" class="btn btn-primary" style="font-size:30px;background: Orange; "> My Information </a></div>
+
+        <br>
+
+        <div align="center">
+            <p style="color:white ;font-size: 40px;border:10px solid MediumSeaGreen; border-radius: 10px; background:MediumSeaGreen; "><b>Advertisements</b></p>
+        </div>
+        <br><br>
+
+
+        @if (Model != null)
+        {
+
+        <div class="container">
+            <div align="center" class="row">
+
+                @foreach (var p in Model)
+                {
+
+                <div class="col-sm-6">
+
+                    <div class="card text-center" style="width: 18rem;">
+
+                        <div class="card-body">
+                            <b>Product ID :</b> @p.adid <br>
+                            <b>Product Name :</b>@p.product_name <br>
+                            <b>Product Category:</b>@p.product_category <br>
+                            <b>Product Quantity :</b>@p.product_quantity <br>
+                            <b> Price Per Unit:</b> @p.price_per_unit <br>
+                            <b> Location:</b> @p.pdivision <br>
+                            <b> Phone:</b> @p.pphone <br><br>
+                            <a href="/Profile/PEdit/@p.adid" class="btn btn-success" Sstyle="border-radius: 25px; ">Update</a>
+                            <a href="/Profile/Delete/@p.adid" class="btn btn-primary" style="background:red; border-radius: 15px; ">Delete</a>
+
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+
+                }
+            </div>
+
+        </div>
+
+        }
+
+
+
+    </div>
+</body>
+</html>		

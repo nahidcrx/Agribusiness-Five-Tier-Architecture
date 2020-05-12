@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mydbModelStoreContainer" CdmEntityContainer="mydbContext">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="mydbModel.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="pass_word" ColumnName="pass_word" />
+          <ScalarProperty Name="admin_type" ColumnName="admin_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="mydbModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="regid" ColumnName="regid" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="pass_word" ColumnName="pass_word" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="division" ColumnName="division" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="mydbModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="adid" ColumnName="adid" />
+          <ScalarProperty Name="pregid" ColumnName="pregid" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_category" ColumnName="product_category" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+          <ScalarProperty Name="price_per_unit" ColumnName="price_per_unit" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="pphone" ColumnName="pphone" />
+          <ScalarProperty Name="pdivision" ColumnName="pdivision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="mydbModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

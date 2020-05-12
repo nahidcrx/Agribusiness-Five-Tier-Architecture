@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mydbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="user_name" />
+    </Key>
+    <Property Name="user_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pass_word" Type="varchar" MaxLength="50" />
+    <Property Name="admin_type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'mydb.dbo.Categories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="category_name" />
+      <PropertyRef Name="image" />
+    </Key>
+    <Property Name="category_name" Type="varbinary" MaxLength="50" Nullable="false" />
+    <Property Name="image" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="regid" />
+    </Key>
+    <Property Name="regid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="user_name" Type="varchar" MaxLength="50" />
+    <Property Name="pass_word" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="division" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="adid" />
+    </Key>
+    <Property Name="adid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pregid" Type="int" />
+    <Property Name="product_name" Type="varchar" MaxLength="50" />
+    <Property Name="product_category" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="varchar(max)" />
+    <Property Name="product_quantity" Type="varchar" MaxLength="50" />
+    <Property Name="price_per_unit" Type="varchar" MaxLength="50" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="pphone" Type="varchar" MaxLength="50" />
+    <Property Name="pdivision" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Products_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="regid" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="pregid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mydbModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Categories].[category_name] AS [category_name], 
+    [Categories].[image] AS [image]
+    FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Products_Customers" Association="Self.FK_Products_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,59 @@
+﻿@model List<ProjectEntity.Customer>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div align="center">
+
+        <p style="color:white ;font-size: 40px;border:10px solid MediumSeaGreen; border-radius: 0px; background:MediumSeaGreen; ">
+            <b>ALL USERS</b>
+
+            
+
+            <a href="/Admin/Report" class="btn btn-primary" style="background:Tomato; border-radius: 15px; position: absolute; left: 20px;">Report</a>
+            <a href="/Login/Logout" class="btn btn-primary" style="background:Tomato; border-radius: 15px; position: absolute; right: 20px;">Logout</a>
+        </p>
+
+        <form class="form-inline my-2 my-lg-0" style="position: absolute; right: 100px; top:10px;" method="post">
+            <input type="text" class="form-control mr-sm-2" name="search" placeholder="Phone Number" aria-label="Search" />
+
+            <button class="btn bnt-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <div class="container">
+            <div align="center" class="row">
+                @foreach (var c in Model)
+                {
+                <div class="col-sm-6">
+                    <div class="card text-center" style="width: 18rem;">
+                        <div class="card-body">
+                            <b class="card-title">Name :</b> @c.first_name @c.last_name<br>
+                            <b class="card-text"> Location:</b> @c.division<br><br>
+                            <a href="/../Admin/Details/@c.regid" class="btn btn-primary" style="border-radius: 15px;">Details</a>
+                            
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+                }
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+
+</html>

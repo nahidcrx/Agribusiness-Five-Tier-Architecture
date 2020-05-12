@@ -1,0 +1,36 @@
+﻿@model List<ProjectEntity.Report>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserDivision</title>
+</head>
+<body>
+    <div class="container">
+        <div align="center" class="row">
+            @foreach (var p in Model)
+            {
+                <div class="col-sm-6">
+                    <div class="card text-center" style="width: 18rem;">
+
+
+
+                        <div class="card-body">
+                            <b class="card-title">Location: </b>@p.name <br>
+                            <b class="card-text"> Number of User: </b>@p.count <br>
+
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
